@@ -80,6 +80,7 @@ export function MonthPicker({ selected, ...props }) {
     <div className={styles.pickerContainer}>
       <div className={styles.yearContainer}>
         <button
+          className={styles.button}
           aria-label='Previous Year'
           onClick={(e) => changeYear(year - 1)}
         >
@@ -101,7 +102,11 @@ export function MonthPicker({ selected, ...props }) {
         <span aria-description='Year selected' className={styles.bold1}>
           {year}
         </span>
-        <button aria-label='Next Year' onClick={(e) => changeYear(year + 1)}>
+        <button
+          className={styles.button}
+          aria-label='Next Year'
+          onClick={(e) => changeYear(year + 1)}
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='24'
@@ -123,7 +128,7 @@ export function MonthPicker({ selected, ...props }) {
           return (
             <button
               key={index}
-              className={`${styles.month} ${
+              className={`${styles.button} ${styles.month} ${
                 index == month && selected.year == year
                   ? styles.active
                   : null
