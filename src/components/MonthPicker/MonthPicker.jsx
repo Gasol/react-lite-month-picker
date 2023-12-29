@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import styles from './MonthPicker.module.css';
 
-export function MonthPicker(props) {
+export function MonthPicker({ selected, ...props }) {
   const [month, setMonth] = useState(
-    props.selected.month ? props.selected.month - 1 : new Date().getMonth()
+    selected.month ? selected.month - 1 : new Date().getMonth()
   );
   const [year, setYear] = useState(
-    props.selected.year ?? new Date().getFullYear()
+    selected.year ?? new Date().getFullYear()
   );
 
   const setActiveMonthBgColor = (r, color) => {
@@ -124,7 +124,7 @@ export function MonthPicker(props) {
             <button
               key={index}
               className={`${styles.month} ${
-                index == month && props.selected.year == year
+                index == month && selected.year == year
                   ? styles.active
                   : null
               }`}
